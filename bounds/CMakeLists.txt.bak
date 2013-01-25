@@ -1,0 +1,30 @@
+cmake_minimum_required (VERSION 2.6)
+project (bounds)
+
+set (BUILDEM_REPO_DIR ${BUILDEM_DIR}/src/buildem)
+set (CMAKE_MODULE_PATH ${BUILDEM_REPO_DIR})
+
+include (BuildSupport)
+
+include (libpng)
+
+set (RUN_ENVIRONMENT "Workstation" CACHE TYPE STRING)
+
+set (SOURCES bounds.cpp PngImage.cpp Stack.cpp PixelBoundBox.cpp)
+
+set (CMAKE_CXX_FLAGS "-Wno-deprecated -Wall")
+set (CMAKE_CXX_FLAGS_RELEASE "-O2")
+set (CMAKE_CXX_FLAGS_DEBUG "-O0")
+set (CMAKE_CXX_LINK_FLAGS "-lpng")
+set (CMAKE_DEBUG_POSTFIX "-g")
+
+link_directories (${BUILDEM_LIB_DIR})
+add_executable (bounds ${SOURCES})
+add_dependencies (bounds ${libpng_NAME})
+
+get_target_property (bounds_exe bounds LOCATION)
+add_custom_command (
+    TARGET bounds
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy ${bounds_exe} ${BUILDEM_DIR}/bin)
+
