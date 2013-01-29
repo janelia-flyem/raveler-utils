@@ -68,7 +68,7 @@ else ()
     
     # Build the simple Go language createtiles program
     add_custom_target (createtiles ALL
-        COMMAND     ${BUILDEM_ENV_STRING} GOBIN=${GO_BIN_DIR} go install createtiles.go
+        COMMAND     ${BUILDEM_ENV_STRING} ${GO_ENV} go install createtiles.go
         WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
         DEPENDS     ${golang_NAME})
 
