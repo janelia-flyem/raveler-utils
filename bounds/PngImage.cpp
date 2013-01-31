@@ -1,11 +1,12 @@
 /*
- * BASED ON libpng-short-exampel.c
+ * BASED ON libpng-short-example.c
  *
- * Copyright 2002-2008 Guillaume Cottenceau.
+ * Base work has following license:
+ *   Copyright 2002-2008 Guillaume Cottenceau.
+ *   This software may be freely redistributed under the terms
+ *   of the X11 license.
  *
- * This software may be freely redistributed under the terms
- * of the X11 license.
- *
+ * Please see Janelia license in LICENSE.txt for modifications.
  */
 
 #include "PngImage.h"
