@@ -117,7 +117,8 @@ func main() {
 	fmt.Printf("Detected %d grayscale images in directory: %s\n",
 		len(grayscaleFnames), grayscaleDir)
 	if len(grayscaleFnames) == 0 {
-		log.Fatalln("Aborting...")
+		log.Fatalf("ERROR: Could not find any png files of format *<n>.png in %s\n",
+			grayscaleDir)
 	}
 	superpixelFnames, err := filepath.Glob(filepath.Join(superpixelDir, "*[0123456789].png"))
 	if err != nil {
