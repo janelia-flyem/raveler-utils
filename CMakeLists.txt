@@ -67,8 +67,8 @@ else ()
     add_subdirectory (verifystack)
     
     # Build the simple Go language createtiles program
-    add_custom_target (createtiles ALL
-        COMMAND     ${BUILDEM_ENV_STRING} ${GO_ENV} go install createtiles.go
+    add_custom_target (createtiles
+        COMMAND     ${BUILDEM_ENV_STRING} ${GO_ENV} go build -o ${BUILDEM_BIN_DIR}/createtiles createtiles.go
         WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
         DEPENDS     ${golang_NAME})
 
