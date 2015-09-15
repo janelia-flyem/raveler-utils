@@ -44,8 +44,8 @@ def main():
     parsed_args = parser.parse_args()
     
     if not parsed_args.output_path:
-        input_name, ext = os.path.splitext(os.path.split(image_path)[1])
-        parsed_args.output_path = os.getcwd() + input_name + '-bodies.h5'
+        input_name, ext = os.path.splitext(os.path.split(parsed_args.image_paths[0])[1])
+        parsed_args.output_path = os.getcwd() + os.sep + input_name + '-bodies.h5'
     assert parsed_args.output_path[-3:] == '.h5', "Output path must end with .h5 extension."
     
     print("Parsing mappings...")
@@ -138,7 +138,7 @@ def read_superpixel_png(png_path):
     so we simply decode it as a uint32 value (after discarding the Alpha channel).
     (Raveler sets the alpha channel to 255)
     """
-    png_data = vigra.impex.readImage(image_path, dtype='NATIVE').withAxes('yxc')
+    png_data = vigra.impex.readImage(png_path, dtype='NATIVE').withAxes('yxc')
     assert png_data.ndim == 3
     assert png_data.shape[-1] == 4
     assert png_data.flags['C_CONTIGUOUS']
