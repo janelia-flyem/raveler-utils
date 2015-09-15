@@ -44,8 +44,8 @@ def main():
     parsed_args = parser.parse_args()
     
     if not parsed_args.output_path:
-        input_name, ext = os.path.splitext(os.path.split(image_path)[1])
-        parsed_args.output_path = os.getcwd() + input_name + '-bodies.h5'
+        input_name, ext = os.path.splitext(os.path.split(parsed_args.image_paths[0])[1])
+        parsed_args.output_path = os.getcwd() + os.sep + input_name + '-bodies.h5'
     assert parsed_args.output_path[-3:] == '.h5', "Output path must end with .h5 extension."
     
     print("Parsing mappings...")
