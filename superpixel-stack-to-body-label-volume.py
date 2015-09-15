@@ -138,7 +138,7 @@ def read_superpixel_png(png_path):
     so we simply decode it as a uint32 value (after discarding the Alpha channel).
     (Raveler sets the alpha channel to 255)
     """
-    png_data = vigra.impex.readImage(image_path, dtype='NATIVE').withAxes('yxc')
+    png_data = vigra.impex.readImage(png_path, dtype='NATIVE').withAxes('yxc')
     assert png_data.ndim == 3
     assert png_data.shape[-1] == 4
     assert png_data.flags['C_CONTIGUOUS']
